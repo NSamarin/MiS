@@ -6,8 +6,9 @@ var sample = [
         "company": "Ghost Tours",
         "name": "Ghost Tour 1",
         "dates": {
-            "Saturday": ["15:30", "18:30"],
-            "Sunday": ["11:30", "19:45"]
+            "Monday": ["15:30", "18:30"],
+            "Wednesday": ["11:30", "19:45"],
+            "Friday": ["22:00"]
         },
         "discount": 0.1,
         "number": 20,
@@ -18,9 +19,8 @@ var sample = [
         "company": "Ghost Tours",
         "name": "Ghost Tour 2",
         "dates": {
-            "Monday": ["15:30", "18:30"],
-            "Wednesday": ["11:30", "19:45"],
-            "Thursday": ["22:00"]
+            "Tuesday": ["15:30", "18:30"],
+            "Sunday": ["11:30", "19:45"],
         },
         "discount": 0.2,
         "number": 40,

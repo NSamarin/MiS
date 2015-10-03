@@ -12,7 +12,7 @@ define(["backbone", "collections/userEventCollection", "views/createEventView"],
             },
             routes: {
                 "": "index",
-                "create": "addNewEvent"
+                "create": "addNewEvent",
                 "about":"about"
             },
             _renderView: function (view) {
@@ -54,23 +54,35 @@ define(["backbone", "collections/userEventCollection", "views/createEventView"],
                 var eventName = $("#event").val();
                 var event = events.findWhere({name: eventName});
                 var dates = event.toJSON().dates;
-                for (var day in dates) {
+                $.each(dates, function (i, item) {
                     $("#date").append($('<option>', {
-                        value: day,
-                        text: day
+                        value: i,
+                        text: i
                     }));
-                }
-                this._addEventTimes(event);
+                });
+                this._addEventTime(dates);
+
                 var self = this;
                 $( "#date" ).change(function() {
-                    self._addEventTimes(event);
+                    eventName = $("#event").val();
+                    event = events.findWhere({name: eventName});
+                    dates = event.toJSON().dates;
+                    self._addEventTime(dates);
                 });
             },
+            _addEventTime: function(dates){
+                console.log("called from add event time");
+                $("#time").html("");
+                var eventDate = $("#date").val();
+                for (var i = 0; i < dates[eventDate].length; i++){
+                    $("#time").append($('<option>', {
+                        value: dates[eventDate][i],
+                        text: dates[eventDate][i]
+                    }));
+                }
 
-            _addEventTimes: function(event){
-                var eventDay = $("#date").val();
-                console.log(eventDay);
             }
+
 
         });
         return Router;
