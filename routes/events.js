@@ -20,7 +20,7 @@ var sample = [
         "name": "Ghost Tour 2",
         "dates": {
             "Tuesday": ["15:30", "18:30"],
-            "Sunday": ["11:30", "19:45"],
+            "Sunday": ["11:30", "19:45"]
         },
         "discount": 0.2,
         "number": 40,
