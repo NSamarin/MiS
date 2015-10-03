@@ -6,7 +6,7 @@ require.config({
         jquery: 'libs/jquery-2.1.4',
         backbone: 'libs/backbone',
         underscore: 'libs/underscore',
-        handlebars: 'libs/handlebars'
+        handlebars: 'libs/handlebars-v4.0.2'
     },
     shim: {
         backbone: {
