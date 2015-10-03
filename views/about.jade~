@@ -1,11 +1,19 @@
+link(href='/css/style.css', rel='stylesheet')
 extends layout
 
 block content
    <p> A warm welcome on Ghost Tours GmbH! </p>
+   <p> How many times have you seen really cool group discounts but didn't have enough people to actualy go for it? Group discount are really cool when going on a school trip, but what happens after that? We are here to bring people together!
+   <p>Imagine you can get amazing group discounts, meet new people and have lots of fun. How does this sound?</p>
    <p> Get your group discounts today! </p>
    <ul>
-   <li>Find an event you would like tojoin and see how many people are needed until the booking is      really convenient for everyone. </li>
+   <li>Find an event you would like to join and see how many people are needed until the booking is      really convenient for everyone. </li>
+   <li> Don't find the perfect event? Add it yourself and wait for more people to join it</li>
    <li> Input your MakeItSocial acount details </li>
+   <li> Wait for enough people to join</li>
+   <li> If you don't get enough people in time, the booking fails. Boo-hoo. Better share it to other people</li>
    </ul>
+   <br>
+   <strong> Rule nr. 41: Don't change your mind. We are in this together! <strong>
 
     
