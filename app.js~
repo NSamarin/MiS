@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/api/events', events);
-app.use('about',about);
+app.use('/about',about);
 
 
 // catch 404 and forward to error handler
@@ -62,5 +62,29 @@ app.use(function(err, req, res, next) {
 
 app.listen(app.get('port'));
 console.log('Express server listening on port ' + app.get('port'));
+
+//CREATE DATABASE
+
+var sqlite3 = require('sqlite3').verbose();  
+var db = new sqlite3.Database('abcd');  
+  
+db.serialize(function() {  
+  db.run("CREATE TABLE user (id INT, dt TEXT)");  
+  
+  var stmt = db.prepare("INSERT INTO user VALUES (?,?)");  
+  for (var i = 0; i < 10; i++) {  
+    
+  var d = new Date();  
+  var n = d.toLocaleTimeString();  
+  stmt.run(i, n);  
+  }  
+  stmt.finalize();  
+  
+  db.each("SELECT id, dt FROM user", function(err, row) {  
+      console.log("User id : "+row.id, row.dt);  
+  });  
+});  
+  
+db.close();  
 
 module.exports = app;
