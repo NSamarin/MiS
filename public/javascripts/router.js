@@ -4,7 +4,13 @@ define(["backbone", "collections/userEventCollection", "views/createEventView", 
     function (Backbone, UserEventCollection, CreateEventView, Helpers) {
 
         var Router = Backbone.Router.extend({
+            routes: {
+                "": "index",
+                "events": "listView"
+            },
+
             initialize: function () {
+
                 var self = this;
                 var eventCollection = new UserEventCollection();
                 eventCollection.fetch({
@@ -13,16 +19,19 @@ define(["backbone", "collections/userEventCollection", "views/createEventView", 
                         Helpers._populateEventNames(self.events);
             }
                 });
+
+                $("#challenge").click(function(e){
+                    console.log("A click!");
+                    e.preventDefault();
+                    Backbone.Events.trigger("router:navigate", "/events");
+                });
+
                 Backbone.Events.on("router:navigate", function (url) {
                     self.navigate(url, {trigger: true});
                 });
 
             },
-            routes: {
-                "": "index",
-                "create": "addNewEvent",
-                "about": "about"
-            },
+
             _renderView: function (view) {
                 //detaches element, resetting events
                 var renderedView = view.render();
@@ -30,6 +39,9 @@ define(["backbone", "collections/userEventCollection", "views/createEventView", 
                 //$("#app").empty().append(renderedView.el);
             },
             index: function () {
+            },
+            listView: function(){
+                console.log("ping");
             }
         });
         return Router;
