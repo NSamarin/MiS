@@ -1,5 +1,5 @@
-define(["backbone"],
-    function (Backbone) {
+define([],
+    function () {
 
         var Helpers = {
             _populateEventNames: function (events) {

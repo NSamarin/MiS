@@ -1,7 +1,7 @@
 //Backbone.Router implemented here
 
-define(["backbone", "collections/userEventCollection", "views/createEventView", "helpers"],
-    function (Backbone, UserEventCollection, CreateEventView, Helpers) {
+define(["backbone", "collections/userEventCollection", "helpers"],
+    function (Backbone, UserEventCollection, Helpers) {
 
         var Router = Backbone.Router.extend({
             routes: {
