@@ -81,7 +81,7 @@ db.serialize(function() {
   stmt.finalize();  
   
   db.each("SELECT id, dt FROM user", function(err, row) {  
-     // console.log("User id : "+row.id, row.dt);  
+      console.log("User id : "+row.id, row.dt);  
   });  
 });  
   
