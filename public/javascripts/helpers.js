@@ -63,7 +63,6 @@ define(["backbone"],
                 this.$time.html('<option selected value="default">Select Time</option>');
                 var eventDate = this.$date.val();
                 if (!this.event.toJSON().dates[eventDate]) return;
-                console.log("from event times");
 
                 $.each(this.event.toJSON().dates[eventDate], function (index, item) {
                     self.$time.append($('<option>', {
