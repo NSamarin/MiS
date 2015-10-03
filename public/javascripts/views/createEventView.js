@@ -26,6 +26,8 @@ define(["backbone"],
 
 
 
+
+
         });
         return createEventView;
     });
