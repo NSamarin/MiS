@@ -19,9 +19,7 @@ var sample = [
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-
-  res
-
+  res.json(sample);
 });
 
 module.exports = router;
