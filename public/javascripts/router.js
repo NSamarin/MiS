@@ -29,13 +29,49 @@ define(["backbone", "collections/userEventCollection", "views/createEventView"],
                 var self = this;
                 eventCollection.fetch({
                     success: function (events) {
-                        var createEventView = new CreateEventView({
-                            collection: events
-                        });
-                        self._renderView(createEventView);
+                        self._addEventDetails(events);
                     }
                 });
+            },
+
+            _addEventDetails: function (events) {
+
+                $.each(events.toJSON(), function (i, item) {
+                    $("#event").append($('<option>', {
+                        value: item.name,
+                        text: item.name
+                    }));
+                });
+                this._addEventDate(events);
+
+                var self = this;
+                $( "#event" ).change(function() {
+                    self._addEventDate(events);
+                });
+            },
+            _addEventDate: function (events) {
+                $("#date").html("");
+                var eventName = $("#event").val();
+                var event = events.findWhere({name: eventName});
+                var dates = event.toJSON().dates;
+                for (var day in dates) {
+                    $("#date").append($('<option>', {
+                        value: day,
+                        text: day
+                    }));
+                }
+                this._addEventTimes(event);
+                var self = this;
+                $( "#date" ).change(function() {
+                    self._addEventTimes(event);
+                });
+            },
+
+            _addEventTimes: function(event){
+                var eventDay = $("#date").val();
+                console.log(eventDay);
             }
+
         });
         return Router;
     });
