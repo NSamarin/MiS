@@ -1,0 +1,11 @@
+extends layout
+
+block content
+   <p> A warm welcome on Ghost Tours GmbH! </p>
+   <p> Get your group discounts today! </p>
+   <ul>
+   <li>Find an event you would like tojoin and see how many people are needed until the booking is      really convenient for everyone. </li>
+   <li> Input your MakeItSocial acount details </li>
+   </ul>
+
+    

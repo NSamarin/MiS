@@ -13,7 +13,6 @@ define(["backbone", "collections/userEventCollection", "views/createEventView"],
             routes: {
                 "": "index",
                 "create": "addNewEvent"
-                "about":"about"
             },
             _renderView: function (view) {
                 //detaches element, resetting events
