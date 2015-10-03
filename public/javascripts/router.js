@@ -32,7 +32,6 @@ define(["backbone", "collections/userEventCollection", "views/createEventView"],
                             collection: events
                         });
                         self._renderView(createEventView);
-                        console.log(eventCollection.toJSON())
                     }
                 });
             }

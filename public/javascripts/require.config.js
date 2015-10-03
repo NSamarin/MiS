@@ -5,7 +5,8 @@ require.config({
     paths: {
         jquery: 'libs/jquery-2.1.4',
         backbone: 'libs/backbone',
-        underscore: 'libs/underscore'
+        underscore: 'libs/underscore',
+        handlebars: 'libs/handlebars'
     },
     shim: {
         backbone: {
@@ -14,6 +15,9 @@ require.config({
         },
         underscore: {
             exports: '_'
+        },
+        handlebars: {
+            exports: 'Handlebars'
         }
     }
 });
