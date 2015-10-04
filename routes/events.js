@@ -57,14 +57,14 @@ router.get('/', function (req, res, next) {
       var results=[];
       var pg = require('pg');
     console.log(req.body.name);
-DATABASE_URL='postgres://qxvgprniwlpgjm:HbD3NYtAQdFL7xk5eRjzxRZ7eD@ec2-54-83-51-38.compute-1.amazonaws.com:5432/da85113i577oud?ssl=true'
+DATABASE_URL='postgres://qxvgprniwlpgjm:HbD3NYtAQdFL7xk5eRjzxRZ7eD@ec2-54-83-51-38.compute-1.amazonaws.com:5432/da85113i577oud?ssl=true';
 
 pg.connect(DATABASE_URL, function(err, client) {
   if (err) throw err;
   console.log('Connected to postgres! Getting schemas...');
-  client.query("CREATE TABLE IF NOT EXISTS events(name varchar(64), dates varchar(64),discount float, number int)");
+  client.query("CREATE TABLE IF NOT EXISTS eventsF(id SERIAL PRIMARY KEY,name varchar(64), dates varchar(64),discount float, number int)");
   //client.query("INSERT INTO events(name,dates,discount,number) values($1,$2,$3,$4)",["a","oct",23,4]);
-  var query = client.query("SELECT name,dates,discount,number from events");
+  var query = client.query("SELECT id,name,dates,discount,number from eventsF");
    query.on('row', function(row) {
       results.push(row);
     });
@@ -78,8 +78,19 @@ pg.connect(DATABASE_URL, function(err, client) {
 });
   });
 router.post('/', function (req, res, next) {
+var pg = require('pg');
+DATABASE_URL='postgres://qxvgprniwlpgjm:HbD3NYtAQdFL7xk5eRjzxRZ7eD@ec2-54-83-51-38.compute-1.amazonaws.com:5432/da85113i577oud?ssl=true';
 console.log("ping from post");
-    res.json("success");
+    
+pg.connect(DATABASE_URL, function(err, client) {
+  if (err) throw err;
+var a=req.name;
+var b=req.date;
+var c=req.discount;
+var d=req.number;
+client.query("INSERT INTO eventsF(name,dates,discount,number) values($1,$2,$3,$4)",[a,b,c,d]);
+  });
+res.json("success");
 });
    
 
