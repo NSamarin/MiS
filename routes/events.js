@@ -53,38 +53,24 @@ var sample = [
 ];
 
 
-/* GET user events */
+/* GET users listing. */
 router.get('/', function (req, res, next) {
-    res.json(sample);
+    var pg = require('pg');
+DATABASE_URL='postgres://qxvgprniwlpgjm:HbD3NYtAQdFL7xk5eRjzxRZ7eD@ec2-54-83-51-38.compute-1.amazonaws.com:5432/da85113i577oud?ssl=true'
+
+pg.connect(process.env.DATABASE_URL, function(err, client) {
+  if (err) throw err;
+  console.log('Connected to postgres! Getting schemas...');
+  client.query("CREATE TABLE IF NOT EXISTS evs(firstname varchar(64), lastname varchar(64))");
+  var x=req.body.name;
+  client.query("INSERT INTO evs(firstname, lastname) values($1, $2)", [x, 'Ganesh']);
+
+  var query = client.query("SELECT firstname, lastname FROM evs ORDER BY lastname, firstname");
+   query.on('row', function(row) {
+      console.log(JSON.stringify(row));
+    });
 });
-
-/* POST user events */
-router.post('/', function (req, res, next) {
-    console.log("ping from post");
     res.json(sample);
-    var sqlite3 = require('sqlite3').verbose();  
-    var db = new sqlite3.Database('abcd');  
-    var e=req.body.number;
-    console.log(e);
-    db.serialize(function() {  
-    db.run("CREATE TABLE if not exists events (id INTEGER PRIMARY KEY, company_name TEXT,event_name TEXT, discount REAL, date TEXT, min_number INT, expiration INT)");  
-  
-    var stmt = db.prepare("INSERT INTO events(company_name,event_name,discount,date,min_number, expiration) VALUES (?,?,?,?,?,?)");   
-    var a=req.body.company; 
-    var b=req.body.name;
-    var c=req.body.discount;
-    var d=dates;
-    var e=req.body.number;
-    var f=req.body.expires;
-    stmt.run(a,b,c,d,e,f);   
-    stmt.finalize(); console.log("req number: "+f);
-    db.each("SELECT id, company_name,event_name,discount,date,min_number, expiration FROM events", function(err, row) {  
-     console.log("Events: : "+row.id,row.company_name, row.event_name,row.discount,row.date,row.min_number,row.expiration);  
-    });  
-   });  
-  
-db.close();  
-
 });
 
 module.exports = router;
