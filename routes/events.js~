@@ -57,7 +57,7 @@ router.get('/', function (req, res, next) {
       var results=[];
       var pg = require('pg');
     console.log(req.body.name);
-DATABASE_URL='postgres://qxvgprniwlpgjm:HbD3NYtAQdFL7xk5eRjzxRZ7eD@ec2-54-83-51-38.compute-1.amazonaws.com:5432/da85113i577oud?ssl=true'
+DATABASE_URL='postgres://qxvgprniwlpgjm:HbD3NYtAQdFL7xk5eRjzxRZ7eD@ec2-54-83-51-38.compute-1.amazonaws.com:5432/da85113i577oud?ssl=true';
 
 pg.connect(DATABASE_URL, function(err, client) {
   if (err) throw err;
@@ -79,13 +79,13 @@ pg.connect(DATABASE_URL, function(err, client) {
   });
 router.post('/', function (req, res, next) {
 var pg = require('pg');
-DATABASE_URL='postgres://qxvgprniwlpgjm:HbD3NYtAQdFL7xk5eRjzxRZ7eD@ec2-54-83-51-38.compute-1.amazonaws.com:5432/da85113i577oud?ssl=t
+DATABASE_URL='postgres://qxvgprniwlpgjm:HbD3NYtAQdFL7xk5eRjzxRZ7eD@ec2-54-83-51-38.compute-1.amazonaws.com:5432/da85113i577oud?ssl=true';
 console.log("ping from post");
     
 pg.connect(DATABASE_URL, function(err, client) {
   if (err) throw err;
 var a=req.name;
-var b=req.date;
+var b=req.dates;
 var c=req.discount;
 var d=req.number;
 client.query("INSERT INTO eventsF(name,dates,discount,number) values($1,$2,$3,$4)",[a,b,c,d]);

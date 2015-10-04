@@ -84,10 +84,10 @@ console.log("ping from post");
     
 pg.connect(DATABASE_URL, function(err, client) {
   if (err) throw err;
-var a=req.name;
-var b=req.date;
-var c=req.discount;
-var d=req.number;
+var a=req.body.name;
+var b=req.body.dates;
+var c=req.body.discount;
+var d=req.body.number;
 client.query("INSERT INTO eventsF(name,dates,discount,number) values($1,$2,$3,$4)",[a,b,c,d]);
   });
 res.json("success");
