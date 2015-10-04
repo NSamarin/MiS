@@ -19,10 +19,17 @@
 <!-- Custom styles for this template -->
 <link href="stylesheets/list.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
+<script src="/javascripts/libs/require.js" data-main="/javascripts/require.config.js"></script>
 
 </head>
 
 <body>
+
+script(id="booktemplate", type="text/x-handlebars")
+    <td>{{name}}</td>
+    <td>{{dates}}</td>
+    <td>{{discount}}</td>
+    <td>{{number}}</td>
 
 <div class="container">
 <div class="header clearfix">
@@ -68,9 +75,16 @@
 </td>
 </tr>
 
+
+
 </tbody>
 </table>
+
+<div id="itemList></div>
+
 </div>
+
+
 
 
 
