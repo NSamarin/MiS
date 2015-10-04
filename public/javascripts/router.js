@@ -1,7 +1,7 @@
 //Backbone.Router implemented here
 
-define(["backbone", "collections/venueCollection", "helpers", "models/event"],
-    function (Backbone, VenueCollection, Helpers, Event) {
+define(["backbone", "collections/venueCollection", "collections/eventCollection", "helpers", "models/event"],
+    function (Backbone, VenueCollection, EventCollection, Helpers, Event) {
 
         var Router = Backbone.Router.extend({
             routes: {
@@ -34,12 +34,15 @@ define(["backbone", "collections/venueCollection", "helpers", "models/event"],
                 //In this case CHANGE
                 var self = this;
 
-                var event = new Event({
+                var singleEvent = Backbone.Model.extend({urlRoot : '/api/events'});
+
+                var event = new singleEvent({
                     name: $("#event").val(),
                     dates: $("#date").val() + "; " + $("#time").val(),
                     discount: $("#discount").val(),
                     number: $("#minppl").val()
                 });
+
                 console.log(event.toJSON());
                 event.save();
 
@@ -65,12 +68,15 @@ define(["backbone", "collections/venueCollection", "helpers", "models/event"],
                 console.log("ping from list view");
                 console.log(id);
                 //TODO: create collection instead and get the model with required ID!!
-                var event = new Event();
-                event.fetch({
-                    success: function(data){
-                        $("#peopleLeft").html(event.get("number"));
-                    }
-                });
+
+                var eventCollection = new EventCollection;
+
+                //var event = new Event();
+                //event.fetch({
+                //    success: function(data){
+                //        $("#peopleLeft").html(event.get("number"));
+                //    }
+                //});
 
                 //
 
