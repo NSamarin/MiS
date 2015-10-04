@@ -6,6 +6,13 @@
     margin: 30px;
 }
 
+#img {
+    height: 200px;
+    background-color: white;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
 .details {
     font-size: 18px;
     font-weight: 300;
