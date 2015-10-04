@@ -61,6 +61,7 @@ router.get('/', function (req, res, next) {
 /* POST user events */
 router.post('/', function (req, res, next) {
     console.log("ping from post");
+    console.log(req.body.name);
     res.json(sample);
 });
 

@@ -3,6 +3,7 @@ define([],
 
         var Helpers = {
             _populateEventNames: function (events) {
+                console.log("ping from helpers");
                 var self = this;
                 this.$event = $("#event");
                 this.$date = $("#date");

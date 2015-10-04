@@ -6,7 +6,7 @@ define(["backbone", "collections/userEventCollection", "helpers", "models/genera
         var Router = Backbone.Router.extend({
             routes: {
                 "": "index",
-                "events": "listView"
+                "events": "detailedView"
             },
 
             initialize: function () {
@@ -52,7 +52,7 @@ define(["backbone", "collections/userEventCollection", "helpers", "models/genera
             index: function () {
             },
 
-            listView: function () {
+            detailedView: function () {
                 console.log("ping from list view");
             }
         });
