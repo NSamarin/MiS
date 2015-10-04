@@ -4,7 +4,7 @@ var router = express.Router();
 var sample = [
     {
         "company": "Ghost Tours",
-        "name": "Ghost Tour 1",
+        "name": "Ghost Tours - 10% Discount",
         "dates": {
             "Monday": ["15:30", "18:30"],
             "Wednesday": ["11:30", "19:45"],
@@ -17,7 +17,7 @@ var sample = [
     },
     {
         "company": "Ghost Tours",
-        "name": "Ghost Tour 2",
+        "name": "Ghost Tours - 20% Discount",
         "dates": {
             "Tuesday": ["15:30", "18:30"],
             "Sunday": ["11:30", "19:45"]
@@ -28,7 +28,7 @@ var sample = [
     },
     {
         "company": "Family Tours",
-        "name": "Zoo 1",
+        "name": "Family Tours - 20% Discount",
         "dates": {
             "Sunday": ["15:30", "18:30"],
             "Wednesday": ["11:30", "19:45"],
@@ -41,7 +41,7 @@ var sample = [
     },
     {
         "company": "Family Tours",
-        "name": "Zoo 2",
+        "name": "Family Tours - 30% Discount",
         "dates": {
             "Thursday": ["11:30", "19:45"],
             "Friday": ["22:00"]

@@ -26,7 +26,7 @@ define([],
 
             _populateEventDates: function () {
                 var self = this;
-                this.$date.unbind();
+                this.$date.unbind(); //important
 
                 this.$date.html('<option selected value="default">Select Date</option>');
                 this.$time.html('<option selected value="default">Select Time</option>');
