@@ -53,13 +53,28 @@ var sample = [
 ];
 
 router.get('/', function (req, res, next) {
-    res.json({
-        id: 15,
-        name: "Test Tour 1",
-        date: "Monday - 10:30",
-        discount: 0.2,
-        number: 20
-    })
+      var results=[];
+      var pg = require('pg');
+    console.log(req.body.name);
+DATABASE_URL='postgres://qxvgprniwlpgjm:HbD3NYtAQdFL7xk5eRjzxRZ7eD@ec2-54-83-51-38.compute-1.amazonaws.com:5432/da85113i577oud?ssl=true'
+
+pg.connect(process.env.DATABASE_URL, function(err, client) {
+  if (err) throw err;
+  console.log('Connected to postgres! Getting schemas...');
+  client.query("CREATE TABLE IF NOT EXISTS evs(firstname varchar(64), lastname varchar(64))");
+  var query = client.query("SELECT firstname, lastname FROM evs ORDER BY lastname, firstname");
+   query.on('row', function(row) {
+      results.push(row);
+    });
+    query.on('end', function() {
+            client.end();
+            return res.json(results);
+        });
+});
+ if(err) {
+          console.log(err);
+        }
+
 });
 router.post('/', function (req, res, next) {
     var pg = require('pg');
