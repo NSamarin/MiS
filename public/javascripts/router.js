@@ -16,18 +16,30 @@ define(["backbone", "collections/userEventCollection", "helpers", "models/genera
                     success: function (events) {
                         self.events = events;
                         Helpers._populateEventNames(self.events);
-            }
+                    }
                 });
 
-                $("#challenge").click(function(e){
-                    console.log("A click!");
+                $("#challenge").click(function (e) {
                     e.preventDefault();
-                    Backbone.Events.trigger("router:navigate", "/events");
+                    if (!($("#time").val() == "default")) self._handleEventCreation();
                 });
 
                 Backbone.Events.on("router:navigate", function (url) {
                     self.navigate(url, {trigger: true});
                 });
+
+            },
+
+            _handleEventCreation: function () {
+                var generatedEvent = new GeneratedEvent({
+                    name: $("#event").val(),
+                    dates: $("#date").val() + "; " + $("#time").val(),
+                    discount: $("#discount").val(),
+                    number: 12
+                });
+                console.log(generatedEvent.toJSON());
+                generatedEvent.save();
+                Backbone.Events.trigger("router:navigate", "/events");
 
             },
 
@@ -39,17 +51,9 @@ define(["backbone", "collections/userEventCollection", "helpers", "models/genera
             },
             index: function () {
             },
-            listView: function(){
-                console.log("ping");
-                //TODO: check for defaults and redirect
-                var generatedEvent = new GeneratedEvent({
-                    name: $("#event").val(),
-                    dates: $("#date").val() + "; " + $("#time").val(),
-                    discount: $("#discount").val(),
-                    number: 12
-                });
-                console.log(generatedEvent.toJSON());
-                generatedEvent.save(); //TODO: specify API url
+
+            listView: function () {
+                console.log("ping from list view");
             }
         });
         return Router;

@@ -6,8 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var events = require('./routes/events');
-var about=require('./routes/about');
+var venues = require('./routes/venues');
+var events = require('./routes/events'); //manage user-created events
+var about = require('./routes/about');
 var app = express();
 
 // view engine setup
@@ -25,9 +26,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/api/events', events);
 app.use('/events', routes); // remove if doesn't work
 app.use('/about',about);
+
+app.use('/api/venues', venues);
+app.use('/api/events', events);
+
 
 
 // catch 404 and forward to error handler

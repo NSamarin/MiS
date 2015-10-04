@@ -53,14 +53,8 @@ var sample = [
 ];
 
 
-/* GET user events */
+/* GET users listing. */
 router.get('/', function (req, res, next) {
-    res.json(sample);
-});
-
-/* POST user events */
-router.post('/', function (req, res, next) {
-    console.log("ping from post");
     res.json(sample);
 });
 
