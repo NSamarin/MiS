@@ -1,6 +1,16 @@
-extends layout
+doctype html
+html
+    head
+        <meta charset="utf-8">
+        <!-- Bootstrap core CSS -->
+        <link href="stylesheets/bootstrap.css" rel="stylesheet" media="screen">
+        <!-- Custom styles for this template -->
+        <link href="stylesheets/custom.css" rel="stylesheet">
+        //<script src="javascripts/bootstrap.js"></script>
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        <script src="/javascripts/libs/require.js" data-main="/javascripts/require.config.js"></script>
+    body
 
-block content
     <div class="container">
     <div class="header clearfix">
     <nav>
@@ -53,11 +63,11 @@ block content
     <div class="col-lg-2">
     <input type="text" class="form-control" id="minppl" placeholder="" disabled>
     </div>
-        
+
     <div class="col-lg-2">
-    
+
     </div>
-    
+
     <div class="col-lg-10">
     <p style="font-size: 14px; margin-top:10px;">Challenge must be completed <span id="expiry">x</span> days before the event.</p>
     </div>

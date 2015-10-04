@@ -41,6 +41,7 @@ define(["backbone", "collections/venueCollection", "helpers", "models/event"],
                 console.log(event.toJSON());
                 event.save();
                 Backbone.Events.trigger("router:navigate", "/events");
+                location.reload();
             },
 
             _renderView: function (view) {
