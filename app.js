@@ -65,7 +65,7 @@ console.log('Express server listening on port ' + app.get('port'));
 
 //CREATE DATABASE
 
-var sqlite3 = require('sqlite3').verbose();  
+/*var sqlite3 = require('sqlite3').verbose();  
 var db = new sqlite3.Database('abcd');  
   
 db.serialize(function() {  
@@ -81,10 +81,11 @@ db.serialize(function() {
   stmt.finalize();  
   
   db.each("SELECT id, dt FROM user", function(err, row) {  
-     // console.log("User id : "+row.id, row.dt);  
+      console.log("User id : "+row.id, row.dt);  
   });  
 });  
   
 db.close();  
+*/
 
 module.exports = app;
