@@ -52,10 +52,18 @@ var sample = [
     }
 ];
 
-
-/* GET users listing. */
 router.get('/', function (req, res, next) {
+    res.json({
+        id: 15,
+        name: "Test Tour 1",
+        date: "Monday - 10:30",
+        discount: 0.2,
+        number: 20
+    })
+});
+router.post('/', function (req, res, next) {
     var pg = require('pg');
+    console.log(req.body.name);
 DATABASE_URL='postgres://qxvgprniwlpgjm:HbD3NYtAQdFL7xk5eRjzxRZ7eD@ec2-54-83-51-38.compute-1.amazonaws.com:5432/da85113i577oud?ssl=true'
 
 pg.connect(process.env.DATABASE_URL, function(err, client) {
@@ -72,5 +80,6 @@ pg.connect(process.env.DATABASE_URL, function(err, client) {
 });
     res.json(sample);
 });
+   
 
 module.exports = router;
