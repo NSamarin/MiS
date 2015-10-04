@@ -3,6 +3,13 @@ var router = express.Router();
 
 /* GET user events */
 router.get('/', function (req, res, next) {
+    res.json({
+        id: 15,
+        name: "Test Tour 1",
+        date: "Monday - 10:30",
+        discount: 0.2,
+        number: 20
+    })
 });
 
 /* POST user events */
@@ -25,9 +32,9 @@ router.post('/', function (req, res, next) {
     var f=req.body.expires;
     stmt.run(a,b,c,d,e,f);   
     stmt.finalize(); console.log("req number: "+f);
-    db.each("SELECT id, company_name,event_name,discount,date,min_number, expiration FROM events", function(err, row) {  
-     console.log("Events: : "+row.id,row.company_name, row.event_name,row.discount,row.date,row.min_number,row.expiration);  
-    });  
+    db.each("SELECT id, company_name,event_name,discount,date,min_number, expiration FROM events", function(err, row) {
+     //console.log("Events: : "+row.id,row.company_name, row.event_name,row.discount,row.date,row.min_number,row.expiration);
+    });
    });  
   
 db.close();  

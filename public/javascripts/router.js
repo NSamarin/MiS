@@ -6,7 +6,7 @@ define(["backbone", "collections/venueCollection", "helpers", "models/event"],
         var Router = Backbone.Router.extend({
             routes: {
                 "": "index",
-                "events": "detailedView"
+                "events/:id": "detailedView"
             },
 
             initialize: function () {
@@ -40,8 +40,21 @@ define(["backbone", "collections/venueCollection", "helpers", "models/event"],
                 });
                 console.log(event.toJSON());
                 event.save();
-                Backbone.Events.trigger("router:navigate", "/events");
-                location.reload();
+
+                var newEvent = new Event();
+                event.fetch({
+                    success: function (data) {
+                        Backbone.Events.trigger("router:navigate", "/events/" + data.get("id"));
+                        $("#peopleLeft").html(data.get("number"));
+                        location.reload();
+
+                    }
+                });
+
+
+
+
+                var self = this;
             },
 
             _renderView: function (view) {
@@ -56,6 +69,10 @@ define(["backbone", "collections/venueCollection", "helpers", "models/event"],
 
             detailedView: function () {
                 console.log("ping from list view");
+
+
+
+
             }
         });
         return Router;

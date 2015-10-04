@@ -7,8 +7,13 @@ router.get('/', function (req, res, next) {
 });
 
 /* GET detailed page. */
-router.get('/events', function (req, res, next) {
+router.get('/events/:id', function (req, res, next) {
     res.render('detailed');
 });
+
+//router.get('/events/:id', function (req, res, next) {
+//    res.render('detailed');
+//});
+
 
 module.exports = router;
