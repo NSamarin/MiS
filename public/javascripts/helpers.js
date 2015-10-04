@@ -7,6 +7,9 @@ define([], function () {
             this.$date = $("#date");
             this.$time = $("#time");
             this.$discount = $("#discount");
+            this.$minppl = $("#minppl");
+            this.$expiry = $("#expiry");
+
             this.events = events;
 
 
@@ -29,7 +32,11 @@ define([], function () {
 
             this.$date.html('<option selected value="default">Select Date</option>');
             this.$time.html('<option selected value="default">Select Time</option>');
-            this.$discount.empty();
+
+            //set defaults
+            this.$discount.removeAttr("value");
+            this.$minppl.removeAttr("value");
+            this.$expiry.html("x");
 
             var eventName = this.$event.val();
 
@@ -46,10 +53,14 @@ define([], function () {
                 }));
             }
 
-            this.$discount.html($('<option>', {
-                value: self.event.toJSON().discount,
-                text: self.event.toJSON().discount
-            }));
+            this.$discount.attr("value", this.event.toJSON().discount);
+            this.$minppl.attr("value", this.event.toJSON().number);
+            this.$expiry.html(this.event.toJSON().expires);
+
+            //this.$discount.html($('<option>', {
+            //    value: self.event.toJSON().discount,
+            //    text: self.event.toJSON().discount
+            //}));
 
 
             this.$date.change(function () {

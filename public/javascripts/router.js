@@ -36,7 +36,7 @@ define(["backbone", "collections/venueCollection", "helpers", "models/event"],
                     name: $("#event").val(),
                     dates: $("#date").val() + "; " + $("#time").val(),
                     discount: $("#discount").val(),
-                    number: 9
+                    number: $("#minppl").val()
                 });
                 console.log(event.toJSON());
                 event.save();
