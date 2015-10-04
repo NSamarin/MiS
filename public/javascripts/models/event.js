@@ -1,6 +1,6 @@
 define(["backbone"], function (Backbone) {
-    var GeneratedEvent = Backbone.Model.extend({
+    var Event = Backbone.Model.extend({
         urlRoot: '/api/events'
     });
-    return GeneratedEvent;
+    return Event;
 });

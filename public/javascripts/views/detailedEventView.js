@@ -2,7 +2,7 @@
 
 define(["backbone"],
     function (Backbone) {
-        var generatedEventListView = Backbone.View.extend({
+        var DetailedEventView = Backbone.View.extend({
             //el: $("#usertable"), // the element tag of this view
             //className: "dashboard",
 
@@ -17,5 +17,5 @@ define(["backbone"],
                 return this;
             }
         });
-        return generatedEventListView;
+        return DetailedEventView;
     });

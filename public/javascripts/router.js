@@ -1,7 +1,7 @@
 //Backbone.Router implemented here
 
-define(["backbone", "collections/userEventCollection", "helpers", "models/generatedEvent"],
-    function (Backbone, UserEventCollection, Helpers, GeneratedEvent) {
+define(["backbone", "collections/venueCollection", "helpers", "models/event"],
+    function (Backbone, VenueCollection, Helpers, Event) {
 
         var Router = Backbone.Router.extend({
             routes: {
@@ -11,10 +11,10 @@ define(["backbone", "collections/userEventCollection", "helpers", "models/genera
 
             initialize: function () {
                 var self = this;
-                var eventCollection = new UserEventCollection();
-                eventCollection.fetch({
-                    success: function (events) {
-                        self.events = events;
+                var venueCollection = new VenueCollection();
+                venueCollection.fetch({
+                    success: function (venues) {
+                        self.events = venues;
                         Helpers._populateEventNames(self.events);
                     }
                 });
@@ -31,14 +31,14 @@ define(["backbone", "collections/userEventCollection", "helpers", "models/genera
             },
 
             _handleEventCreation: function () {
-                var generatedEvent = new GeneratedEvent({
+                var event = new Event({
                     name: $("#event").val(),
                     dates: $("#date").val() + "; " + $("#time").val(),
                     discount: $("#discount").val(),
                     number: 12
                 });
-                console.log(generatedEvent.toJSON());
-                generatedEvent.save();
+                console.log(event.toJSON());
+                event.save();
                 Backbone.Events.trigger("router:navigate", "/events");
 
             },
