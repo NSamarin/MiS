@@ -28,3 +28,5 @@ build/Release
 node_modules
 .idea
 abcd
+
+ticket_site_via_papi.js/
