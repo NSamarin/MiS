@@ -46,9 +46,11 @@ define(["backbone", "collections/venueCollection", "collections/eventCollection"
                 console.log(event.toJSON());
                 event.save();
 
-                event.fetch({
+                var eventCollection = new EventCollection;
+
+                eventCollection.fetch({
                     success: function (data) {
-                        Backbone.Events.trigger("router:navigate", "/events/" + data.get("id"));
+                        Backbone.Events.trigger("router:navigate", "/events/" + data.last().get("id"));
                         location.reload();
                     }
                 });
@@ -67,9 +69,19 @@ define(["backbone", "collections/venueCollection", "collections/eventCollection"
             detailedView: function (id) {
                 console.log("ping from list view");
                 console.log(id);
+                var eventCollection = new EventCollection();
+                eventCollection.fetch({
+                    success: function(data){
+                        var event = data.find(function(ev){
+                            return ev.get("id") == id;
+                        });
+                        console.log(event);
+                    }
+                });
+
                 //TODO: create collection instead and get the model with required ID!!
 
-                var eventCollection = new EventCollection;
+
 
                 //var event = new Event();
                 //event.fetch({

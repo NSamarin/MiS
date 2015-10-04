@@ -13,6 +13,7 @@
     "jade": "~1.11.0",
     "mis-button": "make-it-social/mis-button#1.0.3",
     "morgan": "~1.6.1",
+    "pg": "^4.4.2",
     "serve-favicon": "~2.3.0",
     "sqlite3": "~3.1.0"
   }
