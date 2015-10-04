@@ -3,13 +3,12 @@ var router = express.Router();
 
 /* GET user events */
 router.get('/', function (req, res, next) {
-
 });
 
 /* POST user events */
 router.post('/', function (req, res, next) {
     console.log("ping from post");
-    res.json(sample);
+    res.json("success");
     var sqlite3 = require('sqlite3').verbose();  
     var db = new sqlite3.Database('abcd');  
     var e=req.body.number;
