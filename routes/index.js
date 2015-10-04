@@ -11,6 +11,10 @@ router.get('/events/:id', function (req, res, next) {
     res.render('detailed');
 });
 
+router.get('/events/', function (req, res, next) {
+    res.render('list');
+});
+
 
 
 module.exports = router;
