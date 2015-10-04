@@ -70,10 +70,9 @@ pg.connect(process.env.DATABASE_URL, function(err, client) {
             client.end();
             return res.json(results);
         });
+
 });
- if(err) {
-          console.log(err);
-        }
+ 
 
 });
 router.post('/', function (req, res, next) {

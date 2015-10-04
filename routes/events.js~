@@ -64,13 +64,18 @@ pg.connect(process.env.DATABASE_URL, function(err, client) {
   client.query("CREATE TABLE IF NOT EXISTS evs(firstname varchar(64), lastname varchar(64))");
   var query = client.query("SELECT firstname, lastname FROM evs ORDER BY lastname, firstname");
    query.on('row', function(row) {
-      results.pudh(row);
+      results.push(row);
     });
     query.on('end', function() {
             client.end();
             return res.json(results);
         });
+if(err) {
+          console.log(err);
+        }
 });
+ 
+
 });
 router.post('/', function (req, res, next) {
     var pg = require('pg');
