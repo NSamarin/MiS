@@ -73,7 +73,7 @@ router.post('/', function (req, res, next) {
     var a=req.body.company; 
     var b=req.body.name;
     var c=req.body.discount;
-    var d=dates;
+    var d=req.body.dates;
     var e=req.body.number;
     var f=req.body.expires;
     stmt.run(a,b,c,d,e,f);   
