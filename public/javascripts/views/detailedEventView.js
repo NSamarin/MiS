@@ -12,8 +12,6 @@ define(["backbone"],
 
             // render function here, returns the view itself
             render: function(){
-
-
                 return this;
             }
         });
