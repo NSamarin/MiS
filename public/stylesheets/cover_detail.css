@@ -1,7 +1,13 @@
 /*
  * Globals
  */
-
+.gettogether {
+    font-family: 'Architects Daughter', cursive;
+}
+.footer {
+  padding-top: 19px;
+  color: #777;
+}
 .cover-heading {
     margin: 30px;
 }
@@ -31,10 +37,9 @@
 }
 
 span.fraction {
-    font-size: 100pt;
+    font-size: 80pt;
     font-weight: 400;
     color: limegreen;
-    margin: 10px;
 }
 
 #expiry {
@@ -240,6 +245,11 @@ body {
         /* Must be percentage or pixels for horizontal alignment */
     }
 }
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
 
 @media (min-width: 992px) {
     .masthead,

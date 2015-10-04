@@ -1,12 +1,12 @@
 //Backbone.Router implemented here
 
-define(["backbone", "collections/venueCollection", "helpers", "models/event"],
-    function (Backbone, VenueCollection, Helpers, Event) {
+define(["backbone", "collections/venueCollection", "collections/eventCollection", "helpers", "models/event"],
+    function (Backbone, VenueCollection, EventCollection, Helpers, Event) {
 
         var Router = Backbone.Router.extend({
             routes: {
                 "": "index",
-                "events": "detailedView"
+                "events/:id": "detailedView"
             },
 
             initialize: function () {
@@ -14,8 +14,7 @@ define(["backbone", "collections/venueCollection", "helpers", "models/event"],
                 var venueCollection = new VenueCollection();
                 venueCollection.fetch({
                     success: function (venues) {
-                        self.events = venues;
-                        Helpers._populateEventNames(self.events);
+                        Helpers._populateEventNames(venues);
                     }
                 });
 
@@ -31,16 +30,28 @@ define(["backbone", "collections/venueCollection", "helpers", "models/event"],
             },
 
             _handleEventCreation: function () {
-                var event = new Event({
+                //NB! "EVENT" might break, because might be taken class
+                //In this case CHANGE
+                var self = this;
+
+                var singleEvent = Backbone.Model.extend({urlRoot : '/api/events'});
+
+                var event = new singleEvent({
                     name: $("#event").val(),
                     dates: $("#date").val() + "; " + $("#time").val(),
                     discount: $("#discount").val(),
-                    number: 12
+                    number: $("#minppl").val()
                 });
+
                 console.log(event.toJSON());
                 event.save();
-                Backbone.Events.trigger("router:navigate", "/events");
 
+                event.fetch({
+                    success: function (data) {
+                        Backbone.Events.trigger("router:navigate", "/events/" + data.get("id"));
+                        location.reload();
+                    }
+                });
             },
 
             _renderView: function (view) {
@@ -50,10 +61,28 @@ define(["backbone", "collections/venueCollection", "helpers", "models/event"],
                 //$("#app").empty().append(renderedView.el);
             },
             index: function () {
+                console.log("ping from index page");
             },
 
-            detailedView: function () {
+            detailedView: function (id) {
                 console.log("ping from list view");
+                console.log(id);
+                //TODO: create collection instead and get the model with required ID!!
+
+                var eventCollection = new EventCollection;
+
+                //var event = new Event();
+                //event.fetch({
+                //    success: function(data){
+                //        $("#peopleLeft").html(event.get("number"));
+                //    }
+                //});
+
+                //
+
+
+
+
             }
         });
         return Router;

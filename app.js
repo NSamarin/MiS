@@ -26,8 +26,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/events', routes); // remove if doesn't work
-app.use('/about',about);
+
+//app.use('/events/', routes); // remove if doesn't work
+
+//app.get('/events', function(req, res){
+//    res.render('index.html');
+//});
+
+app.use('/about', about);
 
 app.use('/api/venues', venues);
 app.use('/api/events', events);

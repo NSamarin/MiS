@@ -1411,7 +1411,6 @@ a.bg-danger:focus {
 .page-header {
   padding-bottom: 9px;
   margin: 40px 0 20px;
-  border-bottom: 1px solid #eee;
 }
 ul,
 ol {
@@ -1590,7 +1589,7 @@ pre code {
 }
 @media (min-width: 768px) {
   .container {
-    width: 750px;
+    width: 95%;
   }
 }
 @media (min-width: 992px) {
@@ -2274,7 +2273,7 @@ th {
 .table > tfoot > tr > td {
   padding: 8px;
   line-height: 1.42857143;
-  vertical-align: top;
+  vertical-align: middle;
   border-top: 1px solid #ddd;
 }
 .table > thead > tr > th {
@@ -2589,7 +2588,7 @@ output {
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
-  background-color: #FFF;
+  background-color: #eee;
   opacity: 1;
 }
 .form-control[disabled],

@@ -2274,8 +2274,11 @@ th {
 .table > tfoot > tr > td {
   padding: 8px;
   line-height: 1.42857143;
-  vertical-align: top;
-  border-top: 1px solid #ddd;
+  vertical-align: middle;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.4;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
@@ -2589,7 +2592,7 @@ output {
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
-  background-color: #FFF;
+  background-color: #eee;
   opacity: 1;
 }
 .form-control[disabled],
