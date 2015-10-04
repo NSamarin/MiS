@@ -62,7 +62,7 @@ pg.connect(DATABASE_URL, function(err, client) {
   if (err) throw err;
   console.log('Connected to postgres! Getting schemas...');
   client.query("CREATE TABLE IF NOT EXISTS events(name varchar(64), dates varchar(64),discount float, number int)");
-  client.query("INSERT INTO events(name,dates,discount,number) values($1,$2,$3,$4)",["a","oct",23,4]);
+  //client.query("INSERT INTO events(name,dates,discount,number) values($1,$2,$3,$4)",["a","oct",23,4]);
   var query = client.query("SELECT name,dates,discount,number from events");
    query.on('row', function(row) {
       results.push(row);
