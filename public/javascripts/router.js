@@ -1,7 +1,7 @@
 //Backbone.Router implemented here
 
-define(["backbone", "collections/userEventCollection", "helpers"],
-    function (Backbone, UserEventCollection, Helpers) {
+define(["backbone", "collections/userEventCollection", "helpers", "models/generatedEvent"],
+    function (Backbone, UserEventCollection, Helpers, GeneratedEvent) {
 
         var Router = Backbone.Router.extend({
             routes: {
@@ -10,7 +10,6 @@ define(["backbone", "collections/userEventCollection", "helpers"],
             },
 
             initialize: function () {
-
                 var self = this;
                 var eventCollection = new UserEventCollection();
                 eventCollection.fetch({
@@ -42,6 +41,15 @@ define(["backbone", "collections/userEventCollection", "helpers"],
             },
             listView: function(){
                 console.log("ping");
+                //TODO: check for defaults and redirect
+                var generatedEvent = new GeneratedEvent({
+                    name: $("#event").val(),
+                    dates: $("#date").val() + "; " + $("#time").val(),
+                    discount: $("#discount").val(),
+                    number: 12
+                });
+                console.log(generatedEvent.toJSON());
+                generatedEvent.save(); //TODO: specify API url
             }
         });
         return Router;

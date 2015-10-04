@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/api/events', events);
+app.use('/events', routes); // remove if doesn't work
 app.use('/about',about);
 
 
